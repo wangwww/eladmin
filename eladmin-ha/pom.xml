@@ -30,6 +30,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.java-websocket</groupId>
+            <artifactId>java-websocket</artifactId>
+            <version>1.3.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>site.hyxy</groupId>
+            <artifactId>eladmin-common</artifactId>
+            <version>2.6</version>
+        </dependency>
     </dependencies>
 
     <build>
