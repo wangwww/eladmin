@@ -26,6 +26,7 @@ public class AIUITask {
             ttsResult = aiuiService.send("今天天气怎么样");
         } catch (Exception e) {
             log.error("获取天气信息失败");
+            e.printStackTrace();
             return;
         }
 

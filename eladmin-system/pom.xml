@@ -39,6 +39,14 @@
             <version>2.6</version>
         </dependency>
 
+
+        <!-- ha -->
+        <dependency>
+            <groupId>site.hyxy</groupId>
+            <artifactId>eladmin-ha</artifactId>
+            <version>2.6</version>
+        </dependency>
+
         <!-- Spring boot websocket -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

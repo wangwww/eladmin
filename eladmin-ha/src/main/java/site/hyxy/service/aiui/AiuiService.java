@@ -11,6 +11,7 @@ import org.java_websocket.handshake.ServerHandshake;
 import org.springframework.stereotype.Service;
 import site.hyxy.entity.aiui.TTSResult;
 
+import javax.annotation.PostConstruct;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -19,10 +20,11 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.Objects;
 import java.util.concurrent.*;
 
 @Slf4j
-@Service
+@Service("aiuiService")
 public class AiuiService {
     // 服务地址
     private static final String BASE_URL = "ws://wsapi.xfyun.cn/v1/aiui";
@@ -42,8 +44,14 @@ public class AiuiService {
     private static final String param = "{\"result_level\":\"complete\",\"auth_id\":\"894c984bf8b1111c6728db79d3479ae1\",\"data_type\":\"text\",\"aue\":\"raw\",\"scene\":\"main_box\",\"sample_rate\":\"16000\"}";
 
     private CompletableFuture<TTSResult> aiuiResult;
+    
+    @PostConstruct
+    public void init() {
+        log.error("------------------ aiui task 初始化");
+    }
 
     public synchronized TTSResult send(String msg) throws Exception {
+        aiuiResult = new CompletableFuture<>();
         URI url = new URI(BASE_URL + getHandShakeParams());
         DraftWithOrigin draft = new DraftWithOrigin(ORIGIN);
         MyWebSocketClient client = new MyWebSocketClient(url, draft, aiuiResult);
@@ -117,7 +125,13 @@ public class AiuiService {
 
         @Override
         public void onMessage(String msg) {
-            System.out.println("收到消息： " + msg);
+            log.info("接收到AIUI消息: {}", msg);
+
+            TTSResult ttsResult = JSONObject.parseObject(msg, TTSResult.class);
+
+            if (ttsResult.getMAction().equals("result")) {
+                completableFuture.complete(ttsResult);
+            }
         }
 
         @Override
@@ -129,7 +143,6 @@ public class AiuiService {
         @Override
         public void onClose(int arg0, String arg1, boolean arg2) {
             System.out.println("AIUI链接已关闭" + "," + new Date());
-            completableFuture.complete(null);
         }
 
         @Override
@@ -139,7 +152,10 @@ public class AiuiService {
                 log.info("AIUI服务端返回：" + aiuiResultStr);
 
                 TTSResult ttsResult = JSONObject.parseObject(aiuiResultStr, TTSResult.class);
-                completableFuture.complete(ttsResult);
+                
+                if (ttsResult.getMAction().equals("result")) {
+                    completableFuture.complete(ttsResult);
+                }
             } catch (UnsupportedEncodingException e) {
                 log.error("解析AIUI技能结果失败");
                 completableFuture.complete(null);
