@@ -129,7 +129,7 @@ public class AiuiService {
 
             TTSResult ttsResult = JSONObject.parseObject(msg, TTSResult.class);
 
-            if (ttsResult.getMAction().equals("result")) {
+            if (ttsResult.getAction().equals("result")) {
                 completableFuture.complete(ttsResult);
             }
         }
@@ -153,7 +153,7 @@ public class AiuiService {
 
                 TTSResult ttsResult = JSONObject.parseObject(aiuiResultStr, TTSResult.class);
                 
-                if (ttsResult.getMAction().equals("result")) {
+                if (ttsResult.getAction().equals("result")) {
                     completableFuture.complete(ttsResult);
                 }
             } catch (UnsupportedEncodingException e) {

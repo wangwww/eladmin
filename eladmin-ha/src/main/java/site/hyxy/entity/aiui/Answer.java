@@ -9,17 +9,17 @@ import lombok.Setter;
 @Setter
 public class Answer {
     @JSONField(name = "answerType")
-    private String mAnswerType;
+    private String answerType;
     @JSONField(name = "emotion")
-    private String mEmotion;
+    private String emotion;
     @JSONField(name = "question")
-    private Question mQuestion;
+    private Question question;
     @JSONField(name = "text")
-    private String mText;
+    private String text;
     @JSONField(name = "topicID")
-    private String mTopicID;
+    private String topicID;
     @JSONField(name = "type")
-    private String mType;
+    private String type;
 
 
 }

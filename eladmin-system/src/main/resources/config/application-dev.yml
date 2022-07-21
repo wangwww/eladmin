@@ -127,3 +127,10 @@ file:
   # 文件大小 /M
   maxSize: 100
   avatarMaxSize: 5
+
+nodered:
+  host: 192.168.192.3
+  port: 1880
+  restContext: /nodered
+  restUri:
+    setWeather: /setWeather

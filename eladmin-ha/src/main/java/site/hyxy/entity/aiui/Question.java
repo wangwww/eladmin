@@ -13,7 +13,7 @@ import javax.annotation.Generated;
 @Setter
 public class Question {
     @JSONField(name = "question")
-    private String mQuestion;
+    private String question;
     @JSONField(name = "question_ws")
-    private String mQuestionWs;
+    private String questionWs;
 }

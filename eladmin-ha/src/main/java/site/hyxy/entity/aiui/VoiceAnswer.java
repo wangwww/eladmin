@@ -12,8 +12,6 @@ import javax.annotation.Generated;
 @Getter
 @Setter
 public class VoiceAnswer {
-    @JSONField(name = "content")
-    private String mContent;
-    @JSONField(name = "type")
-    private String mType;
+    private String content;
+    private String type;
 }

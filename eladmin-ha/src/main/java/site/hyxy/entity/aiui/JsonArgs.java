@@ -14,11 +14,10 @@ import javax.annotation.Generated;
 @Setter
 @ToString
 public class JsonArgs {
-
     @JSONField(name = "accent")
-    private String mAccent;
+    private String accent;
     @JSONField(name = "language")
-    private String mLanguage;
+    private String language;
     @JSONField(name = "frame_id")
     private int frameId;
     private String cancel;

@@ -25,15 +25,15 @@ public class TTSResult {
     }
 
     @JSONField(name = "action")
-    private String mAction;
+    private String action;
     @JSONField(name = "code")
-    private String mCode;
+    private String code;
     @JSONField(name = "data")
-    private Data mData;
+    private Data data;
     @JSONField(name = "desc")
-    private String mDesc;
+    private String desc;
     @JSONField(name = "sid")
-    private String mSid;
+    private String sid;
 
 
 }

@@ -13,5 +13,5 @@ import java.util.Map;
 @ToString
 public class IntentData {
     @JSONField(name = "result")
-    List<Map<String, Object>> mResult;
+    List<Map<String, Object>> result;
 }
