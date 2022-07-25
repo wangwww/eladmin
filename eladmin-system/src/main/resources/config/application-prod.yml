@@ -142,3 +142,10 @@ nodered:
   restContext: /nodered
   restUri:
     setWeather: /setWeather
+    setWeather24h: /setWeather24h
+
+heweather:
+  id: HE2207091636371041
+  key: e6898335ad624cd5bca54256a14e4309
+  location: 101110101
+  domain: https://devapi.qweather.com

@@ -2,6 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <parent>
         <artifactId>eladmin</artifactId>
         <groupId>site.hyxy</groupId>
@@ -47,6 +59,20 @@
             <groupId>site.hyxy</groupId>
             <artifactId>eladmin-common</artifactId>
             <version>2.6</version>
+        </dependency>
+
+        <!-- 和风天气SDK -->
+        <dependency>
+            <groupId>com.hefeng</groupId>
+            <artifactId>heweather-java-sdk</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/heweather-java-sdk-v7-1.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.5.8</version>
         </dependency>
     </dependencies>
 </project>
