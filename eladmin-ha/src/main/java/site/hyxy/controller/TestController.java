@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import site.hyxy.annotation.AnonymousAccess;
 import site.hyxy.task.AIUITask;
+import site.hyxy.task.HeWeatherTask;
 
 /**
  * @Author: 王文文
@@ -14,12 +15,12 @@ import site.hyxy.task.AIUITask;
 @RestController
 public class TestController {
     @Autowired
-    AIUITask aiuiTask;
+    HeWeatherTask task;
     
     @GetMapping("/test")
     @AnonymousAccess
     public void test(@RequestParam String location) {
-        aiuiTask.getWeather(location);
+        task.report24HoursWeather();
     }
     
 }
